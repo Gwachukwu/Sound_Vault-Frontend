@@ -1,0 +1,35 @@
+.form-area {
+  border: 0.1rem solid $color-white;
+  max-width: 30rem;
+  border-radius: 1rem;
+  margin: auto;
+  margin-bottom: 1rem;
+  background-color: $color-white;
+  color: $color-primary;
+  & h3,
+  p {
+    padding: 1rem;
+    
+  }
+}
+.form-area_links{
+  color: $color-primary;
+}
+label::after{
+  content: "*";
+  color: red;
+}
+.form-area_form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 80%;
+  margin: auto;
+}
+.form-area_form input {
+  @include styleInputs;
+  padding: 1rem;
+}
+.form-area_alert{
+  text-align: center;
+}

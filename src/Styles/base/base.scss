@@ -1,0 +1,15 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $color-primary;
+    color: $color-white;
+    font-family: $font-primary,Arial, Helvetica, sans-serif;
+    text-align: center;
+    //overflow-x: hidden;
+}

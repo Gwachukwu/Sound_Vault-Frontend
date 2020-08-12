@@ -1,0 +1,33 @@
+.header {
+  padding: 1rem;
+  & h1 {
+    font-size: 3rem;
+  }
+}
+.header_dashboard {
+  display: flex;
+  justify-content: space-between;
+
+  & p {
+    text-decoration: underline;
+    align-self: center;
+    cursor: pointer;
+  }
+}
+#header_btn {
+  background-color: $color-white;
+  color: $color-primary;
+  font-weight: bold;
+  padding: 0 2rem;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  &:hover {
+    box-shadow: 0 1rem 2rem rgba($color-white, 0.2);
+  }
+}
+
+@media (max-width: 760px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+}
