@@ -9,15 +9,25 @@ const Dashboard = () => {
   const [audio, setAudio] = useState({ name: "", url: "", play: false });
 
   useEffect(() => {
-    Axios.get("https://gcsound-vault.herokuapp.com/files")
-      .then((res) => {
-        setState({ ...state, files: [...res.data] });
+    const source = Axios.CancelToken.source();
+    const fetchFiles = async () => {
+      await Axios.get("https://gcsound-vault.herokuapp.com/files", {
+        cancelToken: source.token,
       })
-      .catch((err) => {
-        console.log(err.data);
-      });
+        .then((res) => {
+          setState({ ...state, files: [...res.data] });
+        })
+        .catch((err) => {
+          if (Axios.isCancel(err)) {
+            console.log(err);
+          }
+        });
+    };
+    fetchFiles();
+    return () => {
+      source.cancel();
+    };
   }, [state]);
-
   return (
     <div className="dashboard">
       {state.files.map((file) => {
