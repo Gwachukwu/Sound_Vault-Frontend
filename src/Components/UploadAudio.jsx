@@ -19,7 +19,7 @@ const UploadAudio = ({ hide, setHide }) => {
     }
     setAlert({ ...alert, message: "" }); //Remove error message when user is typing
   };
-  console.log(state);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setAlert({ ...alert, loading: true });
@@ -76,7 +76,7 @@ const UploadAudio = ({ hide, setHide }) => {
         <button type="submit" className="btn">
           {alert.loading ? "Uploading" : "Upload"}
         </button>
-        <button className="btn" onClick={() => setHide(true)}>
+        <button type="button" className="btn" onClick={() => setHide(true)}>
           Close
         </button>
       </form>

@@ -17,6 +17,7 @@ const Dashboard = () => {
         console.log(err.data);
       });
   }, [state]);
+
   return (
     <div className="dashboard">
       {state.files.map((file) => {
