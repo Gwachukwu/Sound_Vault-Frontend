@@ -22,30 +22,31 @@ const SignIn = (props) => {
     if (!email || !password) {
       setAlert({ ...alert, message: "Please fill all fields" });
       setLoading(false);
+    } else {
+      const formData = { email, password };
+      Axios.post("https://gcsound-vault.herokuapp.com/users/signin", formData)
+        .then((res) => {
+          localStorage.setItem("token", res.data.token);
+          Axios.defaults.headers.common["authorization"] = res.data.token; //set token to authorization header
+          localStorage.setItem("isAuthenticated", true); // isAuthenticated true to localStorage
+          setLoading(false);
+          setAlert({
+            ...alert,
+            color: "green",
+            loading: false,
+            message: res.data.message,
+          });
+          props.history.push("/"); //redirect to dashboard
+        })
+        .catch((err) => {
+          setAlert({
+            ...alert,
+            color: "red",
+            message: err.response.data.message,
+          });
+          setLoading(false);
+        });
     }
-    const formData = { email, password };
-    Axios.post("https://gcsound-vault.herokuapp.com/users/signin", formData)
-      .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        Axios.defaults.headers.common["authorization"] = res.data.token; //set token to authorization header
-        localStorage.setItem("isAuthenticated", true); // isAuthenticated true to localStorage
-        setLoading(false);
-        setAlert({
-          ...alert,
-          color: "green",
-          loading: false,
-          message: res.data.message,
-        });
-        props.history.push("/"); //redirect to dashboard
-      })
-      .catch((err) => {
-        setAlert({
-          ...alert,
-          color: "red",
-          message: err.response.data.message,
-        });
-        setLoading(false);
-      });
   };
 
   return (
