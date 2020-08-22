@@ -50,7 +50,7 @@ const SignIn = (props) => {
 
   return (
     <div className="form-area">
-      <h3>Sign im to continue</h3>
+      <h3>Sign in to continue</h3>
       <form className="form-area_form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
