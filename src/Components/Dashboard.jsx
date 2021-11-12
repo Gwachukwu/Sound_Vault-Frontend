@@ -27,7 +27,7 @@ const Dashboard = () => {
     return () => {
       source.cancel();
     };
-  }, [state]);
+  }, []);
   return (
     <div className="dashboard">
       {state.files.map((file) => {
