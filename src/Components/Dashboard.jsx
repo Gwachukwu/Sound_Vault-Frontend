@@ -10,8 +10,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const source = Axios.CancelToken.source();
-    const fetchFiles = async () => {
-      await Axios.get("https://gcsound-vault.herokuapp.com/files", {
+      Axios.get("https://gcsound-vault.herokuapp.com/files", {
         cancelToken: source.token,
       })
         .then((res) => {
@@ -22,8 +21,6 @@ const Dashboard = () => {
             console.log(err);
           }
         });
-    };
-    fetchFiles();
     return () => {
       source.cancel();
     };
