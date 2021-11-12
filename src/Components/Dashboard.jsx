@@ -27,7 +27,6 @@ const Dashboard = () => {
   }, []);
   return (
     <div className="dashboard">
-    <h1>It has worked</h1>
       {state.files.map((file) => {
         return (
           <div className="card" key={file._id}>
